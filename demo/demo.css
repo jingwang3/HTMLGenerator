@@ -7,11 +7,6 @@ html, body {
 	font-family:Verdana, Arial, sans-serif;
 	color:#000
 }
-h1 {
-	font-size:33px;
-	color:#99CC00;
-	margin:15px 0
-}
 .navigation {
 	margin:10px 0 20px;
 }
@@ -21,12 +16,6 @@ h1 {
 }
 .navigation a {
 	margin-right:4px;
-}
-h2 {
-	margin:15px 0 25px;
-	color:#608000;
-	font-size:14px;
-	font-weight:bold
 }
 a:link, a:visited {
 	text-decoration:underline
