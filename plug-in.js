@@ -38,7 +38,7 @@ $( document ).ready(function() {
 				jqteStatus = false;
 			}
 			$(".jqte-test").each(function() {
-				content += ('<div>' + $(this).text() + '</div><br><hr>');
+				content += ('<div class="para-box">' + $(this).text() + '</div><br><hr>');
     			$('.html-code').text(content);
 			})
 		}
