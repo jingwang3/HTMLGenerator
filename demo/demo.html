@@ -18,15 +18,17 @@
 <h2>HTML Generator v1.0b</h2>
 
 <!------------------------------------------------------------ Toggle jQTE Button ------------------------------------------------------------>
-Enter Number of Paragraphs: <input id="paraNum" type="number" value="1">
+Enter the date for this publication: <input id="pubDate" type="text" value="January 2014"><br />
+Enter number of paragraphs: <input id="paraNum" type="number" value="1">
+
 <button id="updateBtn">Clear and Update</button>
 
 <!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
 <div id="content-box">
 </div>
 <!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
-<button class="status">Toggle HTML</button>
+<button class="status">View HTML</button>
 <button id="export">Generate HTML</button>
-<code class="html-code"></code>
+<div class="output"><textarea class="jqte-test html-code"></textarea></div>
 </body>
 </html>
