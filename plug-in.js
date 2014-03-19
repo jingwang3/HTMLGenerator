@@ -22,7 +22,7 @@ $( document ).ready(function() {
   	//generate paragraph containers
 	$("#updateBtn").click(function()
 		{
-			var r=confirm("Are you sure?! Regenerate fields will lose your work.");
+			var r=confirm("Are you sure?! Reset will erase all your existing content");
 			if (r==true)
 			{
 			  if($('#paraNum').val() >0 && $('#paraNum').val()<=15){
@@ -48,6 +48,37 @@ $( document ).ready(function() {
 			
 		}
 	);
+	//update import html
+	$("#watching-box").change(function()
+		{
+			$('#import-content-box').html($(this).val());
+		}
+	);
+	//import html
+	$("#importBtn").click(function()
+		{
+			var paraNumber = $('#import-content-box').find('.para-box').length;
+			if(paraNumber >0 && paraNumber<=15){
+					var content = '';
+					for (var i = 0; i < paraNumber; i++) {
+						content += "<div class='para-section'><h2>Paragraph " + (i+1) + "</h2>" + paraHeading + bodyContent + "</div>"
+					};
+					$('#content-box').html(content);
+					$(".jqte-test").jqte();
+					for (var i = 0; i < paraNumber; i++) {
+						$($('.heading-text').get(i)).val($($('.para-title').get(i)).text())
+					};
+					
+					$(".para-section").each(function(){
+						$(this).find('.jqte_editor').html($($('.para-content').get($(this).index())).html());
+					})
+					jqteStatus = true;
+					//disable edit for output textarea
+					disableContentEdit();
+				}
+			
+		}
+	);
 	//generate html
 	$("#export").click(function()
 		{
@@ -61,7 +92,7 @@ $( document ).ready(function() {
 				$('.status').text('Edit');
 			}
 			$(".para-section").each(function() {
-				content += ('<div class="para-box"><h1><a href="#" name="link-' + $(this).find('.heading-text').index() + '"></a>' + $(this).find('.heading-text').val() + '</h1>' + $(this).find('.jqte-test').text() + '</div><br><hr>');
+				content += ('<div class="para-box" id="paraNum' + $(this).index() + '"><h1 class="para-title"><a href="#" name="link-' + $(this).index() + '"></a>' + $(this).find('.heading-text').val() + '</h1><div class="para-content">' + $(this).find('.jqte-test').text() + '</div></div><br><hr>');
     			
 			})
 			$('.html-code').text(content);

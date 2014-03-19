@@ -52,8 +52,8 @@ textarea.jqte-test, div.jqte-test, span.jqte-test {
 	min-height:100px;
 }
 button {
-	display:block;
-	margin: 10px 0;
+	display:inline-block;
+	margin: 10px 15px 10px 0;
 	padding:6px 0 4px;
 	width:154px;
 	background:#658700;
