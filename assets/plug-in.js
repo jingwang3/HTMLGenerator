@@ -100,6 +100,16 @@ $( document ).ready(function() {
 			disableContentEdit();
 		}
 	);
+	$('#download').click(function(e){
+
+		$.generateFile({
+			filename	: 'newsletter.html',
+			content		: $('#final-output').val(),
+			script		: 'download.php'
+		});
+		
+		e.preventDefault();
+	});
 });
 
 
