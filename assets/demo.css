@@ -63,7 +63,8 @@ button {
 	font-size:13px;
 	font-weight:bold;
 	border-radius:3px; -webkit-border-radius:3px; -moz-border-radius:3px;
-	box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00; -webkit-box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00; -moz-box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00;
+	box-shadow: 0 0 2px #009700, inset 0 1px 1px #85FF00; 
+	-webkit-box-shadow: 0 0 2px #009212, inset 0 1px 1px #008D06; -moz-box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00;
 	cursor:pointer;
 }
 button:hover {

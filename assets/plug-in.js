@@ -48,15 +48,10 @@ $( document ).ready(function() {
 			
 		}
 	);
-	//update import html
-	$("#watching-box").change(function()
-		{
-			$('#import-content-box').html($(this).val());
-		}
-	);
 	//import html
 	$("#importBtn").click(function()
 		{
+
 			var paraNumber = $('#import-content-box').find('.para-box').length;
 			if(paraNumber >0 && paraNumber<=15){
 					var content = '';
@@ -79,6 +74,37 @@ $( document ).ready(function() {
 			
 		}
 	);
+	function handleFileSelect(evt) {
+	    var files = evt.target.files; // FileList object
+
+	    // Loop through the FileList and render image files as thumbnails.
+	    for (var i = 0, f; f = files[i]; i++) {
+
+	      // Only process image files.
+	      if (!f.type.match('text/html') && !f.type.match('text/plain')) {
+        		//console.log('this happened');
+        		continue;
+      	  }
+
+	      var reader = new FileReader();
+	      // Closure to capture the file information.
+	      reader.onload = (function(theFile) {
+	        return function(e) {
+	          // Render thumbnail.
+	          $('#import-content-box').html(e.target.result);
+	          if($('#import-content-box').find('.para-box').length <= 0){
+	          	$('#import-content-box').html('');
+	          }
+	          
+	        };
+	      })(f);
+
+	      // Read in the image file as a data URL.
+	      reader.readAsText(f);
+
+	    }
+  	}
+	document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	//generate html
 	$("#export").click(function()
 		{
@@ -102,8 +128,11 @@ $( document ).ready(function() {
 	);
 	$('#download').click(function(e){
 
+		var dNow = new Date();
+		var utcdate = 'newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
+		
 		$.generateFile({
-			filename	: 'newsletter.html',
+			filename	: utcdate,
 			content		: $('#final-output').val(),
 			script		: 'download.php'
 		});
