@@ -20,6 +20,14 @@ html, body {
 a:link, a:visited {
 	text-decoration:underline
 }
+a.link-button {
+	padding: 0 5px;
+	background-color: #008000;
+	color: #FFF;
+	font-weight: bold;
+	text-decoration: none;
+	margin: 0 5px;
+}
 .testbutton {
 	margin-bottom:30px;
 	background:#3399FF;
