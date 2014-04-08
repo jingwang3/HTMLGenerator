@@ -68,7 +68,7 @@ $( document ).ready(function() {
 				$(".para-section").each(function(){
 					$(this).find('.jqte_editor').html($($('.para-content').get($(this).index())).html());
 				})
-				jqteStatus = true;
+				//jqteStatus = true;
 				//disable edit for output textarea
 				disableContentEdit();
 			}
@@ -81,7 +81,7 @@ $( document ).ready(function() {
 	//generate html
 	$("#export").click(function()
 		{
-			$('.output .jqte-test').jqte();
+			$('.jqte-test').jqte();
 
 			var content = '';
 			if($('#pubDate').val().length != 0){
@@ -103,7 +103,7 @@ $( document ).ready(function() {
 			})
 			$('.html-code').text(content);
 			//disable edit for output textarea
-			$('.output .jqte-test').jqte();
+			$('.jqte-test').jqte();
 			disableContentEdit();
 		}
 	);
