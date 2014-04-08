@@ -3,16 +3,18 @@ var paraHeading = '<input type="text" class="heading-text" value="Paragraph Head
 var bodyContent = '<textarea name="textarea" class="jqte-test"></textarea>';
 
 $( document ).ready(function() {
+	$('.output .jqte-test').jqte();
+	disableContentEdit();
 	//toggle html and editor
   	$(".status").click(function()
 		{
 			if(jqteStatus){
 				jqteStatus = false;
-				$('.jqte-test').jqte({"status" : false});
+				$('#content-box .jqte-test').jqte({"status" : false});
 				$('.status').text('Edit');
 			}else{
 				jqteStatus = true;
-				$('.jqte-test').jqte({"status" : true});
+				$('#content-box .jqte-test').jqte({"status" : true});
 				$('.status').text('View HTML');
 			}
 			//disable edit for output textarea
@@ -31,7 +33,7 @@ $( document ).ready(function() {
 						content += "<div class='para-section'><h2>Paragraph " + (i+1) + "</h2>" + paraHeading + bodyContent + "</div>";
 					};
 					$('#content-box').html(content);
-					$(".jqte-test").jqte();
+					$("#content-box .jqte-test").jqte();
 					$(".para-section").each(function(){
 						$(this).find('.jqte_editor').html("<p>Please enter the content for this paragraph...</p>");
 					})
@@ -58,7 +60,7 @@ $( document ).ready(function() {
 				};
 				$('#pubDate').val($('.publication-date').text());
 				$('#content-box').html(content);
-				$(".jqte-test").jqte();
+				$("#content-box .jqte-test").jqte();
 				for (var i = 0; i < paraNumber; i++) {
 					$($('.heading-text').get(i)).val($($('.para-title').get(i)).text())
 				};
@@ -79,11 +81,8 @@ $( document ).ready(function() {
 	//generate html
 	$("#export").click(function()
 		{
-			if(jqteStatus){
-				$('.jqte-test').jqte({"status" : false});
-				jqteStatus = false;
-				$('.status').text('Edit');
-			}
+			$('.output .jqte-test').jqte();
+
 			var content = '';
 			if($('#pubDate').val().length != 0){
 				content = '<div class="date-box"><span class="publication-date">' + $('#pubDate').val() + '</span></div><hr>';
@@ -104,6 +103,7 @@ $( document ).ready(function() {
 			})
 			$('.html-code').text(content);
 			//disable edit for output textarea
+			$('.output .jqte-test').jqte();
 			disableContentEdit();
 		}
 	);
@@ -125,10 +125,12 @@ $( document ).ready(function() {
 		{
 			var paraNum = $("#content-box .para-section").length;
 			$('#content-box').append("<div class='para-section'><h2>Paragraph " + (paraNum+1) + "</h2>" + paraHeading + bodyContent + "</div>");
-			$('#paraNum').val(parseInt($('#paraNum').val())+1);
+			$('#paraNum').val(paraNum + 1);
 			if(jqteStatus){
 				$("#content-box .jqte-test").last().jqte()
 				$("#content-box .para-section").last().find('.jqte_editor').html("<p>Please enter the content for this paragraph...</p>");
+			}else{
+				$("#content-box .jqte-test").last().html("<p>Please enter the content for this paragraph...</p>");
 			}
 		}
 	);
@@ -136,7 +138,7 @@ $( document ).ready(function() {
 		{
 			if($("#content-box .para-section").length > 0){
 				$("#content-box .para-section").last().remove();
-				$('#paraNum').val(parseInt($('#paraNum').val())-1);
+				$('#paraNum').val($("#content-box .para-section").length);
 			}else{
 				alert('No more paragraph can be removed!');
 			}
