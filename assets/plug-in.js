@@ -125,14 +125,18 @@ $( document ).ready(function() {
 		{
 			var paraNum = $("#content-box .para-section").length;
 			$('#content-box').append("<div class='para-section'><h2>Paragraph " + (paraNum+1) + "</h2>" + paraHeading + bodyContent + "</div>");
-			$("#content-box .jqte-test").last().jqte()
-			$("#content-box .para-section").last().find('.jqte_editor').html("<p>Please enter the content for this paragraph...</p>");
+			$('#paraNum').val(parseInt($('#paraNum').val())+1);
+			if(jqteStatus){
+				$("#content-box .jqte-test").last().jqte()
+				$("#content-box .para-section").last().find('.jqte_editor').html("<p>Please enter the content for this paragraph...</p>");
+			}
 		}
 	);
 	$('#removePara').click(function()
 		{
 			if($("#content-box .para-section").length > 0){
 				$("#content-box .para-section").last().remove();
+				$('#paraNum').val(parseInt($('#paraNum').val())-1);
 			}else{
 				alert('No more paragraph can be removed!');
 			}
