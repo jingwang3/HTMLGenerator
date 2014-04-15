@@ -90,6 +90,9 @@ $( document ).ready(function() {
 	);
 	//Read file from local drive
   	$('#files').on( "change", handleFileSelect);
+  	$('#quickLinkCheckBox').change(function() {
+  		$("#export").addClass("highlight");
+	});
 	//document.getElementById('files').addEventListener('change', handleFileSelect, false);
 	//generate html
 	$("#export").click(function()
@@ -124,7 +127,7 @@ $( document ).ready(function() {
 
 		}
 	);
-	$('#download').click(function(e)
+	$('#download').click(function(evt)
 		{
 			var dNow = new Date();
 			var fileNameStr = $('#themeSelected').val() + '_newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
@@ -135,11 +138,12 @@ $( document ).ready(function() {
 				script		: 'download.php'
 			});
 			
-			e.preventDefault();
+			evt.preventDefault();
 		}
 	);
-	$('#addPara').click(function()
+	$('#addPara').click(function(evt)
 		{
+			evt.preventDefault();
 			var paraNum = $("#content-box .para-section").length;
 			$('#content-box').append("<div class='para-section'><h2>Paragraph " + (paraNum+1) + "</h2>" + paraHeading + bodyContent + "</div>");
 			$('#paraNum').val(paraNum + 1);
@@ -152,8 +156,9 @@ $( document ).ready(function() {
 			$("#export").addClass("highlight");
 		}
 	);
-	$('#removePara').click(function()
+	$('#removePara').click(function(evt)
 		{
+			evt.preventDefault();
 			if($("#content-box .para-section").length > 0){
 				$("#content-box .para-section").last().remove();
 				$('#paraNum').val($("#content-box .para-section").length);
