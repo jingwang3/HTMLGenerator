@@ -100,13 +100,15 @@ $( document ).ready(function() {
 			if($('#pubDate').val().length != 0){
 				content = '<div class="date-box"><span class="publication-date">' + $('#pubDate').val() + '</span></div><hr>';
 			}
-			content += '<div class="quick-links"><span>In This Issue</span><ul>';
-			$(".para-section").each(function() {
+			if($('#quickLinkCheckBox').prop('checked')){
+				content += '<div class="quick-links"><span>In This Issue</span><ul>';
+				$(".para-section").each(function() {
 
-				content += ('<li class="quick-link-item" id="quickLink' + $(this).index() + '"><a href="#link-' + $(this).index() + '">' + $(this).find('.heading-text').val() + '</a></li>');
-    			
-			})
-			content += '</ul></div><hr>';
+					content += ('<li class="quick-link-item" id="quickLink' + $(this).index() + '"><a href="#link-' + $(this).index() + '">' + $(this).find('.heading-text').val() + '</a></li>');
+	    			
+				})
+				content += '</ul></div><hr>';
+			}
 			$(".para-section").each(function() {
 				if(($(".para-section").length - $(this).index()) > 1){
 					content += ('<div class="para-box" id="paraNum' + $(this).index() + '"><h1 class="para-title"><a href="#" name="link-' + $(this).index() + '"></a>' + $(this).find('.heading-text').val() + '</h1><div class="para-content">' + $(this).find('.jqte-test').text() + '</div></div><br><hr>');
@@ -125,11 +127,11 @@ $( document ).ready(function() {
 	$('#download').click(function(e)
 		{
 			var dNow = new Date();
-			var fileNameStr = $('#themeSelected').val() + 'newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
+			var fileNameStr = $('#themeSelected').val() + '_newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
 			
 			$.generateFile({
 				filename	: fileNameStr,
-				content		: $('#final-output').val(),
+				content		: $('#final-output').text(),
 				script		: 'download.php'
 			});
 			
