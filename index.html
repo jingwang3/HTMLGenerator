@@ -11,32 +11,35 @@
 </head>
 
 <body>
-
-<h2>HTML Generator v2.0a</h2>
-
-<!------------------------------------------------------------ Toggle jQTE Button ------------------------------------------------------------>
-Enter the date for this publication: <input id="pubDate" type="text" value="January 2014"><br />
-Enter number of paragraphs: <input id="paraNum" type="number" value="1"><a href="#" id="addPara" class="link-button">+</a><a href="#" id="removePara" class="link-button">-</a>
-<br>
-<button id="updateBtn">Clear and Update</button>
-<br />
-<button id="importBtn">Import</button>
-<input type="file" id="files" name="files[]" value="Choose File to Import">
-<br>
-<div id="import-content-box" style="display:none;"></div>
-
-<!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
-<div id="content-box">
+<div class="header fixed">
+	<p><span>Enter number of paragraphs: </span><input id="paraNum" type="number" value="1"><a href="#" id="addPara" class="link-button">+</a><a href="#" id="removePara" class="link-button">-</a>
+	<button id="updateBtn">Clear and Update</button></p>
+	<p><button id="importBtn">Import</button>
+	<input type="file" id="files" name="files[]" value="Choose File to Import">
+	<div id="import-content-box" style="display:none;"></div></p>
+	<p><button class="status">View HTML</button>
+	<button id="export">Generate HTML</button>
+	<select id="themeSelected"><option value="celiac">Celiac</option><option value="BE">BE</option></select></p>
 </div>
-<!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
+<div class="body-wrapper">
+	<h2>HTML Generator v3.0 4-15-2014</h2>
 
-<button class="status">View HTML</button>
-<hr>
-<button id="export">Generate HTML</button>
-<form action="./" method="post">
-<div class="output"><textarea id="final-output" class="jqte-test html-code"></textarea></div>
-            <button type="button" id="download">Download HTML</button>
-</form>
+	<!------------------------------------------------------------ Toggle jQTE Button ------------------------------------------------------------>
+	Enter the date for this publication: <input id="pubDate" type="text" value="January 2014"><br />
+
+
+	<!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
+	<div id="content-box"></div>
+
+	<!------------------------------------------------------------ jQUERY TEXT EDITOR ------------------------------------------------------------>
+
+	<hr>
+	<h2 class="preview">Preview</h2>
+	<form action="./" method="post">
+		<div class="output"><textarea id="final-output" class="jqte-test html-code"></textarea></div>
+		<button type="button" id="download">Download HTML</button>
+	</form>
+</div>
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="assets/jquery-te-1.4.0.min.js" charset="utf-8"></script>
 <script type="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>

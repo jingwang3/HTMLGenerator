@@ -337,7 +337,7 @@
 /* editor area */
 .jqte_editor, .jqte_source {
 	padding:10px;
-	background:#FFF;
+	background: #FFF;
 	min-height: 165px;
 	max-height:900px;
 	overflow:auto;

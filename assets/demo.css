@@ -1,11 +1,37 @@
 /* general styles */
 html, body {
-	padding:30px 100px;
 	background:#E5E5E5
+;
+	margin: 0;
 }
 * {
 	font-family:Verdana, Arial, sans-serif;
 	color:#000
+}
+div.header.fixed {
+	overflow: hidden;
+	background-color: #E0E0CA;
+	text-align: center;
+	padding: 10px 10px 5px;
+	position: fixed;
+	top: 0;
+	z-index: 999;
+	width: 100%;
+	box-shadow: black 0 3px 15px;
+}
+body div.header.fixed p {
+	margin: 0;
+	display: inline-block;
+	float: left;
+	padding: 0 5px 5px;
+}
+body div.header.fixed button {
+	margin: 0;
+}
+body div.body-wrapper {
+	padding: 20px;
+	top: 100px;
+	position: relative;
 }
 .navigation {
 	margin:10px 0 20px;
@@ -21,11 +47,12 @@ a:link, a:visited {
 	text-decoration:underline
 }
 a.link-button {
-	padding: 0 5px;
+	padding: 5px;
 	background-color: #008000;
 	color: #FFF;
 	font-weight: bold;
 	text-decoration: none;
+	overflow: hidden;
 	margin: 0 5px;
 }
 .testbutton {
@@ -56,6 +83,16 @@ a.link-button {
 	border:#AAA 1px solid;
 	font-size:13px;
 }
+.output .jqte{
+	margin-top:0;
+}
+.output .jqte .jqte_editor{
+	background-color: #EEEEAD;
+}
+h2.preview {
+	margin: 0;
+	color: #181818;
+}
 textarea.jqte-test, div.jqte-test, span.jqte-test {
 	min-height:100px;
 }
@@ -74,6 +111,29 @@ button {
 	box-shadow: 0 0 2px #009700, inset 0 1px 1px #85FF00; 
 	-webkit-box-shadow: 0 0 2px #009212, inset 0 1px 1px #008D06; -moz-box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00;
 	cursor:pointer;
+}
+.highlight {
+	background: #EE7C23;
+	border: #EE7C23 1px solid;
+	color: #fff !important;
+	box-shadow: 0 0 2px #EE7C23, inset 0 1px 1px #EE7C23;
+	-webkit-box-shadow: 0 0 2px #EE7C23, inset 0 1px 1px #EE7C23;
+	-moz-box-shadow: 0 0 2px #000, inset 0 1px 1px #EE7C23;
+}
+.highlight:hover {
+	background:#EE7C23;
+	border-color:#EE7C23;
+	text-decoration:none !important;
+	cursor:pointer
+}
+
+.highlight:active {
+	background:#EE7C23;
+	border-color:#EE7C23;
+	color:#EE7C23 !important;
+	box-shadow:0 0 3px #000,inset 0 -2px 2px #333;
+	-webkit-box-shadow:0 0 3px #000, inset 0 -2px 2px #333;
+	-moz-box-shadow:0 0 3px #000, inset 0 -2px 2px #333;
 }
 button:hover {
 	background:#78A000;
