@@ -112,6 +112,29 @@ button {
 	-webkit-box-shadow: 0 0 2px #009212, inset 0 1px 1px #008D06; -moz-box-shadow:0 0 2px #000, inset 0 1px 1px #99CC00;
 	cursor:pointer;
 }
+.highlight {
+	background: #EE7C23;
+	border: #EE7C23 1px solid;
+	color: #fff !important;
+	box-shadow: 0 0 2px #EE7C23, inset 0 1px 1px #EE7C23;
+	-webkit-box-shadow: 0 0 2px #EE7C23, inset 0 1px 1px #EE7C23;
+	-moz-box-shadow: 0 0 2px #000, inset 0 1px 1px #EE7C23;
+}
+.highlight:hover {
+	background:#EE7C23;
+	border-color:#EE7C23;
+	text-decoration:none !important;
+	cursor:pointer
+}
+
+.highlight:active {
+	background:#EE7C23;
+	border-color:#EE7C23;
+	color:#EE7C23 !important;
+	box-shadow:0 0 3px #000,inset 0 -2px 2px #333;
+	-webkit-box-shadow:0 0 3px #000, inset 0 -2px 2px #333;
+	-moz-box-shadow:0 0 3px #000, inset 0 -2px 2px #333;
+}
 button:hover {
 	background:#78A000;
 	border-color:#658700;

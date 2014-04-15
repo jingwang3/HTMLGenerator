@@ -2,6 +2,16 @@ var jqteStatus = true;
 var paraHeading = '<input type="text" class="heading-text" value="Paragraph Heading">';
 var bodyContent = '<textarea name="textarea" class="jqte-test"></textarea>';
 
+var textColor = "#333";
+var fontFace = "arial, sans-serif";
+var styleParaContent = {"font-size": "14px", "color": textColor, "font-family": fontFace};
+var styleH1 = {"font-size": "24px", "font-family": fontFace, "font-weight": "bold"};
+var styleH2 = {"font-size": "19px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
+var styleH3 = {"font-size": "15px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
+var styleP = {"font-size": "14px", "color": textColor, "font-family": fontFace};
+var styleLi = {"font-size": "14px", "color": textColor, "font-family": fontFace};
+
+
 $( document ).ready(function() {
 	$('.output .jqte-test').jqte();
 	disableContentEdit();
@@ -40,6 +50,7 @@ $( document ).ready(function() {
 					jqteStatus = true;
 					//disable edit for output textarea
 					disableContentEdit();
+    				$("#export").addClass("highlight");
 				}
 			}
 			else
@@ -58,6 +69,7 @@ $( document ).ready(function() {
 				for (var i = 0; i < paraNumber; i++) {
 					content += "<div class='para-section'><h2>Paragraph " + (i+1) + "</h2>" + paraHeading + bodyContent + "</div>"
 				};
+				$('#pubDate').val('');
 				$('#pubDate').val($('.publication-date').text());
 				$('#content-box').html(content);
 				$("#content-box .jqte-test").jqte();
@@ -71,6 +83,7 @@ $( document ).ready(function() {
 				//jqteStatus = true;
 				//disable edit for output textarea
 				disableContentEdit();
+				$("#export").addClass("highlight");
 			}
 			
 		}
@@ -81,8 +94,8 @@ $( document ).ready(function() {
 	//generate html
 	$("#export").click(function()
 		{
+			$("#export").removeClass("highlight");
 			$('.jqte-test').jqte();
-
 			var content = '';
 			if($('#pubDate').val().length != 0){
 				content = '<div class="date-box"><span class="publication-date">' + $('#pubDate').val() + '</span></div><hr>';
@@ -104,16 +117,18 @@ $( document ).ready(function() {
 			$('.html-code').text(content);
 			//disable edit for output textarea
 			$('.jqte-test').jqte();
+			addInlineCSS($('#themeSelected').val());
 			disableContentEdit();
+
 		}
 	);
 	$('#download').click(function(e)
 		{
 			var dNow = new Date();
-			var utcdate = 'newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
+			var fileNameStr = $('#themeSelected').val() + 'newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
 			
 			$.generateFile({
-				filename	: utcdate,
+				filename	: fileNameStr,
 				content		: $('#final-output').val(),
 				script		: 'download.php'
 			});
@@ -132,6 +147,7 @@ $( document ).ready(function() {
 			}else{
 				$("#content-box .jqte-test").last().html("<p>Please enter the content for this paragraph...</p>");
 			}
+			$("#export").addClass("highlight");
 		}
 	);
 	$('#removePara').click(function()
@@ -142,9 +158,48 @@ $( document ).ready(function() {
 			}else{
 				alert('No more paragraph can be removed!');
 			}
+			$("#export").addClass("highlight");
 		}
 	);
 });
+
+function addInlineCSS(theme) {
+	//console.log(theme);
+	var colorH1 = {"color": "#2082cb"};
+	//reset all inline CSS
+	$('.output .jqte_editor').find('*').removeAttr('style');
+	//add inline CSS
+	$('.output .jqte_editor .date-box').css({"text-align": "right", "font-size": "18px", "font-family": fontFace, "line-height":"20px"});
+	$('.output .jqte_editor .quick-links span').css({"color":"#746661", "font-family": fontFace, "font-size":"16px", "font-weight":"bold"});
+	$('.output .jqte_editor').find('.para-content').css(styleParaContent);
+	$('.output .jqte_editor').find('h1').css(styleH1);
+	$('.output .jqte_editor').find('h2').css(styleH2);
+	$('.output .jqte_editor').find('h3').css(styleH3);
+	$('.output .jqte_editor').find('p').css(styleP);
+	$('.output .jqte_editor').find('li').css(styleLi);
+
+	switch(theme)
+	{
+		case "celiac":
+		  colorH1 = {"color": "#2082cb"};
+		  break;
+		case "BE":
+		  colorH1 = {"color": "#da291c"};
+		  break;
+		case "3":
+		  //execute code block 3
+		  break;
+		case "4":
+		  //execute code block 4
+		  break;
+		default:
+	}
+
+	$('.output .jqte_editor').find('h1').css(colorH1); //general h1
+	if(theme == 1){$('.output .jqte_editor #paraNum0').find('h1').css('color', '#746661')};//welcome color
+	$('.output .jqte_editor .publication-date').css(colorH1); //pub date 
+	
+}
 
 
 function disableContentEdit() {
