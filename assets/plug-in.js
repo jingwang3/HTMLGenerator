@@ -5,7 +5,7 @@ var bodyContent = '<textarea name="textarea" class="jqte-test"></textarea>';
 var textColor = "#333";
 var fontFace = "arial, sans-serif";
 var styleParaContent = {"font-size": "14px", "color": textColor, "font-family": fontFace};
-var styleH1 = {"font-size": "24px", "font-family": fontFace, "font-weight": "bold"};
+var styleH1 = {"font-size": "24px", "font-family": fontFace, "font-weight": "bold", "line-height": "24px"};
 var styleH2 = {"font-size": "19px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
 var styleH3 = {"font-size": "15px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
 var styleP = {"font-size": "14px", "color": textColor, "font-family": fontFace};
@@ -90,7 +90,7 @@ $( document ).ready(function() {
 	);
 	//Read file from local drive
   	$('#files').on( "change", handleFileSelect);
-  	$('#quickLinkCheckBox').change(function() {
+  	$('#quickLinkCheckBox, #themeSelected').change(function() {
   		$("#export").addClass("highlight");
 	});
 	//document.getElementById('files').addEventListener('change', handleFileSelect, false);
@@ -134,7 +134,7 @@ $( document ).ready(function() {
 			
 			$.generateFile({
 				filename	: fileNameStr,
-				content		: $('#final-output').text(),
+				content		: $('.output .jqte_editor').html(),
 				script		: 'download.php'
 			});
 			
