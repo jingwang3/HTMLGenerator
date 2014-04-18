@@ -8,7 +8,7 @@ var styleParaContent = {"font-size": "14px", "color": textColor, "font-family": 
 var styleH1 = {"font-size": "24px", "font-family": fontFace, "font-weight": "bold", "line-height": "24px"};
 var styleH2 = {"font-size": "19px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
 var styleH3 = {"font-size": "15px", "color": textColor, "font-family": fontFace, "font-weight": "bold"};
-var styleP = {"font-size": "14px", "color": textColor, "font-family": fontFace};
+var styleP = {"font-size": "14px", "color": textColor, "font-family": fontFace, "padding": 0, "margin": "0 0 10px 0"};
 var styleLi = {"font-size": "14px", "color": textColor, "font-family": fontFace};
 
 
