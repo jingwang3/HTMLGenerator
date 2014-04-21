@@ -357,7 +357,7 @@
 	margin-bottom:7px
 }
 .jqte_editor img {
-    float:left;
+    /*float:left;*/
 	margin:0 10px 5px 0
 }
 .jqte_editor a[jqte-setlink], .jqte_editor a[jqte-setlink] * {
