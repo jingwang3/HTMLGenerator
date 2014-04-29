@@ -203,7 +203,7 @@ function addInlineCSS(theme) {
 	}
 
 	$('.output .jqte_editor').find('h1').css(colorH1); //general h1
-	if(theme == 1){$('.output .jqte_editor #paraNum0').find('h1').css('color', '#746661')};//welcome color
+	$('.output .jqte_editor #paraNum0').find('h1').css('color', '#746661');//welcome color
 	$('.output .jqte_editor .publication-date').css(colorH1); //pub date 
 	
 }
