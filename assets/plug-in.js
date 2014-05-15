@@ -122,7 +122,9 @@ $( document ).ready(function() {
 			$('.html-code').text(content);
 			//disable edit for output textarea
 			$('.jqte-test').jqte();
-			addInlineCSS($('#themeSelected').val());
+			if($('#themeSelected').val() != 'sample'){
+				addInlineCSS($('#themeSelected').val());
+			}
 			disableContentEdit();
 
 		}
@@ -190,20 +192,20 @@ function addInlineCSS(theme) {
 		case "celiac":
 		  colorH1 = {"color": "#2082cb"};
 		  break;
-		case "BE":
+		case "be":
 		  colorH1 = {"color": "#da291c"};
 		  break;
-		case "3":
-		  //execute code block 3
+		case "ap":
+		  colorH1 = {"color": "#da291c"};
 		  break;
-		case "4":
-		  //execute code block 4
+		case "diabetes":
+		  colorH1 = {"color": "#2082cb"};
 		  break;
 		default:
 	}
 
 	$('.output .jqte_editor').find('h1').css(colorH1); //general h1
-	if(theme == 1){$('.output .jqte_editor #paraNum0').find('h1').css('color', '#746661')};//welcome color
+	$('.output .jqte_editor #paraNum0').find('h1').css('color', '#746661');//welcome color
 	$('.output .jqte_editor .publication-date').css(colorH1); //pub date 
 	
 }
