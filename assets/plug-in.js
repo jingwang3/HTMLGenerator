@@ -11,7 +11,6 @@ var styleH3 = {"font-size": "15px", "color": textColor, "font-family": fontFace,
 var styleP = {"font-size": "14px", "color": textColor, "font-family": fontFace, "padding": 0, "margin": "0 0 10px 0"};
 var styleLi = {"font-size": "14px", "color": textColor, "font-family": fontFace};
 
-
 $( document ).ready(function() {
 	$('.output .jqte-test').jqte();
 	disableContentEdit();
@@ -119,7 +118,7 @@ $( document ).ready(function() {
     				content += ('<div class="para-box" id="paraNum' + $(this).index() + '"><h1 class="para-title"><a href="#" name="link-' + $(this).index() + '"></a>' + $(this).find('.heading-text').val() + '</h1><div class="para-content">' + $(this).find('.jqte-test').text() + '</div></div>');
     			}
 			})
-			$('.html-code').text(content);
+			$('.html-code').text(content.replace(/\’/g, "'"));
 			//disable edit for output textarea
 			$('.jqte-test').jqte();
 			if($('#themeSelected').val() != 'sample'){
