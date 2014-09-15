@@ -118,7 +118,8 @@ $( document ).ready(function() {
     				content += ('<div class="para-box" id="paraNum' + $(this).index() + '"><h1 class="para-title"><a href="#" name="link-' + $(this).index() + '"></a>' + $(this).find('.heading-text').val() + '</h1><div class="para-content">' + $(this).find('.jqte-test').text() + '</div></div>');
     			}
 			})
-			$('.html-code').text(content.replace(/\’/g, "'"));
+
+			$('.html-code').text(content);
 			//disable edit for output textarea
 			$('.jqte-test').jqte();
 			if($('#themeSelected').val() != 'sample'){
@@ -132,10 +133,24 @@ $( document ).ready(function() {
 		{
 			var dNow = new Date();
 			var fileNameStr = $('#themeSelected').val() + '_newsletter_'+(dNow.getMonth()+ 1) + '_' + dNow.getDate() + '_' + dNow.getFullYear() + '.html';
-			
+			var DOWNLOAD_CONTENT = '';
+
+			DOWNLOAD_CONTENT = $('.output .jqte_editor').html();
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/\’/g, "'");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/\”/g, '"');
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/\“/g, '"');
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/–|—/g, '--');
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/®/g, "&reg;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/™/g, "&trade;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/½/g, "&frac12;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/¼/g, "&frac14;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/¾/g, "&frac34;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/⅛/g, "&frac18;");
+			DOWNLOAD_CONTENT = DOWNLOAD_CONTENT.replace(/é/g, "&eacute;");
+
 			$.generateFile({
 				filename	: fileNameStr,
-				content		: $('.output .jqte_editor').html(),
+				content		: DOWNLOAD_CONTENT,
 				script		: 'download.php'
 			});
 			
@@ -208,7 +223,6 @@ function addInlineCSS(theme) {
 	$('.output .jqte_editor .publication-date').css(colorH1); //pub date 
 	
 }
-
 
 function disableContentEdit() {
 	$('.output').find('.jqte_toolbar').hide();
